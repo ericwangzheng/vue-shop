@@ -58,7 +58,7 @@
     color: #ffffff;
   }
 
-  .product + .menu{
+  .product-detail + .menu{
     opacity: 0;
     bottom: -4.5rem;
   }

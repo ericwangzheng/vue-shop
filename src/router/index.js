@@ -1,8 +1,8 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import Index from '@/components/index';
-import Hello2 from '@/components/Hello2';
-import ProductDetail from '@/components/productDetail';
+import Index from '@/pages/index';
+import Mine from '@/pages/mine';
+import ProductDetail from '@/pages/productDetail';
 
 Vue.use(Router);
 
@@ -22,7 +22,7 @@ export default new Router({
       menuBar: true,
       index: 1,
       iconClass: 'fa fa-user-o',
-      component: Hello2,
+      component: Mine,
     },
     {
       path: '/product/:data',
