@@ -1,6 +1,7 @@
 # vue-shop
 
 基于Vue的店铺商城，开发中
+----
 
 > mall based on Vue.js
 
