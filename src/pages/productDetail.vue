@@ -1,7 +1,7 @@
 <template>
   <div class="product-detail">
     <swiper class="product-swiper" :options="swiperOption">
-      <swiper-slide v-for="items in productDetail.imgLists" :key=""><img class="slide-img" :src="items"/></swiper-slide>
+      <swiper-slide v-for="items in productDetail.imgLists"><img class="slide-img" :src="items"/></swiper-slide>
       <div class="swiper-pagination" slot="pagination"></div>
     </swiper>
     <i class="fa fa-angle-left back-before" aria-hidden="true" @click="backIndex()"></i>
