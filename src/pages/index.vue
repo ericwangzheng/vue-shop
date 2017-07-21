@@ -1,37 +1,37 @@
 <template>
-  <section>
+  <section >
     <swiper :options="swiperOption">
-      <swiper-slide v-for="items in swiperSlides" :key=""><img class="slide-img" :src="items"/></swiper-slide>
+      <swiper-slide v-for="(items,index) in swiperSlides" :key="index"><img class="slide-img" :src="items"/></swiper-slide>
       <div class="swiper-pagination" slot="pagination"></div>
     </swiper>
     <div class="classify">
-      <div v-for="(items,index) in classifyList" class="classify-item" :class="classifyStatus===index?'active':''" @click="changeClassify(index)">
-        <span class="count">{{items.count}}</span>
-        <span class="name">{{items.name}}</span>
-      </div>
-    </div>
-    <div class="filter">
-      <div v-for="(items,index) in filterList" class="filter-item" :class="filterStatus===index?'active':''" @click="changeFilter(items,index)">
-        <span class="name">{{items.name}}</span>
-        <img class="sort" v-if="items.sortable" :src="sortImg[items.sortStatus]"/>
-      </div>
-    </div>
-    <div class="product">
-      <div v-for="items in productList" class="product-item" @click="productDetail(items.id)">
-        <div class="img">
-          <img  :src="items.imgUrl"/>
+        <div v-for="(items,index) in classifyList" class="classify-item" :class="classifyStatus===index?'active':''" @click="changeClassify(index)">
+          <span class="count">{{items.count}}</span>
+          <span class="name">{{items.name}}</span>
         </div>
-        <p class="description">{{items.description}}</p>
-        <span class="price"><span class="money-icon">￥</span>{{items.price}}</span>
       </div>
-    </div>
+    <div class="filter">
+        <div v-for="(items,index) in filterList" class="filter-item" :class="filterStatus===index?'active':''" @click="changeFilter(items,index)">
+          <span class="name">{{items.name}}</span>
+          <img class="sort" v-if="items.sortable" :src="sortImg[items.sortStatus]"/>
+        </div>
+      </div>
+    <div class="product">
+        <div v-for="items in productList" class="product-item" @click="productDetail(items.id)">
+          <div class="img">
+            <img  :src="items.imgUrl"/>
+          </div>
+          <p class="description">{{items.description}}</p>
+          <span class="price"><span class="money-icon">￥</span>{{items.price}}</span>
+        </div>
+      </div>
   </section>
 </template>
 
 <script>
   /* eslint-disable */
   export default {
-    name: 'hello1',
+    name: 'index',
     data() {
       return {
         classifyStatus: 0,
@@ -163,13 +163,12 @@
     margin-right: .5rem !important;
     margin-left: .5rem !important;
   }
-
   .classify {
     width: 100%;
     position: relative;
   }
-  .classify .active{
-    color: #e35160 ;
+  .classify .active .name,.classify .active .count{
+    color: #e35160 !important;
   }
   .classify .active:before{
     content: '';
@@ -228,6 +227,7 @@
   .classify-item .name {
     display: block;
     font-size: 1.2rem;
+    color: #a9a9a9;
   }
   .filter{
     width: 100%;
@@ -291,7 +291,7 @@
   .product-item .description{
     width: 100%;
     padding:1rem 1rem 0 ;
-    font-size: 1.6rem;
+    font-size: 1.3rem;
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
@@ -304,7 +304,7 @@
     background-color: #ffffff;
     font-size: 2rem;
     color: #e35160 ;
-    padding:1rem;
+    padding:0.5rem 1rem 1rem;
     font-weight:500;
   }
   .product-item:active .price,.product-item:active  .description{

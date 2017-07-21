@@ -54,8 +54,7 @@
   }
 
   .menu-item.active {
-    background-color: #e35160;
-    color: #ffffff;
+    color:  #e35160;
   }
 
   .product-detail + .menu{
