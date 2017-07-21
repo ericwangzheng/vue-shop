@@ -12,6 +12,9 @@
   export default {
     name: 'app',
     components: { tapBar },
+    methods:{
+
+    },
     mounted() {
       let that = this;
       that.$router.push('/index');

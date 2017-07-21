@@ -16,7 +16,7 @@
       </div>
     </div>
     <div class="cart">
-      
+      <div></div>
     </div>
   </div>
 </template>

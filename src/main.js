@@ -18,6 +18,10 @@ new Vue({
   components: { App },
 });
 
+Vue.directive('swiperLeft',{
+
+});
+
 /* eslint-disable*/
 ~(function (doc, win) {
   let docEle = doc.documentElement,
