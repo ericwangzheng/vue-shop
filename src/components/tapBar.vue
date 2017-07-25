@@ -32,10 +32,11 @@
 <style>
   .menu {
     position: fixed;
-    bottom: 0;
     left: 0;
     width: 100%;
     color: #707070;
+    opacity: 0;
+    bottom: -4.5rem;
     background-color: #fff;
     transition:all .618s;
     -webkit-transition:all .618s;
@@ -57,9 +58,9 @@
     color:  #e35160;
   }
 
-  .product-detail + .menu{
-    opacity: 0;
-    bottom: -4.5rem;
+  .index + .menu,.mine + .menu{
+    bottom: 0;
+    opacity: 1;
   }
 
   .menu-item {

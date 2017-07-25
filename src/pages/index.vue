@@ -1,5 +1,5 @@
 <template>
-  <section >
+  <section class="index">
     <swiper :options="swiperOption">
       <swiper-slide v-for="(items,index) in swiperSlides" :key="index"><img class="slide-img" :src="items"/></swiper-slide>
       <div class="swiper-pagination" slot="pagination"></div>
@@ -53,7 +53,7 @@
           sortStatus:0,
         }, {
           name: '销量',
-          sortable: false,
+          sortable: true,
           sortStatus:0,
         }, {
           name: '新品',
@@ -197,7 +197,7 @@
     width: calc(100% / 3);
     display: inline-block;
     text-align: center;
-    padding: 0.5rem;
+    padding: 0.5rem 0;
     position: relative;
   }
   .classify-item:after{

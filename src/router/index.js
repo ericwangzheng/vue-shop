@@ -3,6 +3,7 @@ import Router from 'vue-router';
 import Index from '@/pages/index';
 import Mine from '@/pages/mine';
 import ProductDetail from '@/pages/productDetail';
+import FillInOrder from '@/pages/fillInOrder'
 
 Vue.use(Router);
 
@@ -27,6 +28,10 @@ export default new Router({
     {
       path: '/product/:data',
       component: ProductDetail,
+    },
+    {
+      path: '/fill_in_order/:data',
+      component: FillInOrder,
     },
   ],
 });

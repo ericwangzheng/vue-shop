@@ -55,6 +55,25 @@
         <span class="notice">支持7天无理由退货</span>
       </div>
     </div>
+    <div class="rate-list-wrapper">
+      <div class="hd">
+        <span class="item">评价</span>
+        <i class="fa fa-angle-right rate-list-icon"></i>
+      </div>
+      <div class="rate-list">
+        <div class="rate-item" v-for="items in rateList">
+          <star-rate :rateLevel="items.rateLevel"></star-rate>
+          <span>{{items.customerName}}</span>
+          <div class="rate-content" v-if="items.rateContent">{{items.rateContent}}</div>
+          <div class="" v-if="items.rateImgs">
+            <div v-for="src in items.rateImgs" class="">
+              <img :src="src"/>
+            </div>
+          </div>
+          <span class="time">{{items.rateTime}}</span>
+        </div>
+      </div>
+    </div>
     <div class="buy">
       <div class="buy-btn" @click="buyNow()">立即购买</div>
     </div>
@@ -62,6 +81,7 @@
 </template>
 
 <script>
+  import starRate from '../components/starRate.vue'
   /* eslint-disable*/
   export default {
     name: 'ProductDetail',
@@ -78,6 +98,52 @@
           mousewheelControl: true,
           observeParents: true,
         },
+        rateList: [
+          {
+            rateLevel: 1,
+            customerName: 'eric',
+            rateContent: '东西很好啊！！！！！！',
+            rateImgs: [
+              '../static/images/shop1.jpg',
+              '../static/images/shop1.jpg',
+              '../static/images/shop1.jpg'
+            ],
+            rateTime:'2017-07-25 18:37'
+          },
+          {
+            rateLevel: 1,
+            customerName: 'eric',
+            rateContent: '东西很好啊！！！！！！',
+            rateImgs: [
+              '../static/images/shop1.jpg',
+              '../static/images/shop1.jpg',
+              '../static/images/shop1.jpg'
+            ],
+            rateTime:'2017-07-25 18:37'
+          },
+          {
+            rateLevel: 1,
+            customerName: 'eric',
+            rateContent: '东西很好啊！！！！！！',
+            rateImgs: [
+              '../static/images/shop1.jpg',
+              '../static/images/shop1.jpg',
+              '../static/images/shop1.jpg'
+            ],
+            rateTime:'2017-07-25 18:37'
+          },
+          {
+            rateLevel: 1,
+            customerName: 'eric',
+            rateContent: '东西很好啊！！！！！！',
+            rateImgs: [
+              '../static/images/shop1.jpg',
+              '../static/images/shop1.jpg',
+              '../static/images/shop1.jpg'
+            ],
+            rateTime:'2017-07-25 18:37'
+          }
+        ],
         productDetail: {
           imgLists: [
             'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
@@ -136,15 +202,22 @@
           that.countError = false;
         }
       },
+      buyNow(){
+        let that = this;
+        let id = that.$route.params.data;
+        that.$router.push(`/fill_in_order/${id}`)
+      }
     },
     mounted() {
-
+    },
+    components: {
+      starRate
     }
   };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style>
+<style scoped>
   .product-detail {
     background-color: #e8e8e8;
     font-size: 0;
@@ -339,9 +412,11 @@
     border: 0.05rem solid #707070;
     border-radius: .5rem;
   }
-  .version-btn:active{
+
+  .version-btn:active {
     background-color: #f0f0f0;
   }
+
   .count {
     font-size: 0;
     margin-top: 1rem;
@@ -413,8 +488,10 @@
     font-size: 1.4rem;
     background-color: #ffffff;
     position: relative;
+    margin-bottom: 1rem;
   }
-  .choose-address:before{
+
+  .choose-address:before {
     content: '';
     position: absolute;
     left: 0;
@@ -425,7 +502,8 @@
     transform: translateY(0.5);
     -webkit-transform: translateY(0.5);
   }
-  .choose-address:after{
+
+  .choose-address:after {
     content: '';
     position: absolute;
     left: 0;
@@ -436,15 +514,19 @@
     transform: translateY(0.5);
     -webkit-transform: translateY(0.5);
   }
+
   .address-wrapper {
-    padding:0 0 0 1rem;
+    padding: 0 0 0 1rem;
     overflow: hidden;
     height: 4.6rem;
     line-height: 4.6rem;
+    position: relative;
   }
-  .address-wrapper:active{
-    background-color:#f0f0f0;
+
+  .address-wrapper:active {
+    background-color: #f0f0f0;
   }
+
   .address-wrapper .item {
     display: inline-block;
     float: left;
@@ -454,11 +536,11 @@
     display: inline-block;
     width: calc(100% - 3.8rem);
     padding: 0 5rem 0 2rem;
-    position: relative;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
   }
+
   .address-icon {
     color: #e35160;
     transform-origin: 50% 100%;
@@ -474,13 +556,41 @@
     top: 0;
     right: 2rem;
   }
-  .notice-wrapper{
+
+  .notice-wrapper {
     padding: 1rem;
   }
-  .notice-wrapper .notice{
+
+  .notice-wrapper .notice {
     color: #a9a9a9;
     padding-left: 1rem;
   }
+
+  .rate-list-wrapper {
+    position: relative;
+    background: #ffffff;
+  }
+
+  .rate-list-wrapper .hd {
+    font-size: 1.4rem;
+    padding: 1rem 1rem;
+    position: relative;
+  }
+  .rate-list{
+    font-size: 1.4rem;
+  }
+
+  .rate-list-icon {
+    position: absolute;
+    font-size: 2rem;
+    line-height: 4.1rem;
+    color: #9c9c9c;
+    top: 0;
+    right: 2rem;
+  }
+
+
+
   .buy {
     position: fixed;
     bottom: 0;
